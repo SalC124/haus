@@ -1,7 +1,7 @@
-{ config, pkgs, ... }:
+{ config, pkgs, activeTheme, ... }:
 
 let
-  themesConfig = import ./themes.nix;
+  themesConfig = import ./themes.nix { inherit activeTheme; };
   theme = themesConfig.themes.${themesConfig.activeTheme};
 in
 {
@@ -22,5 +22,5 @@ in
   _module.args = { inherit theme; };
 
   programs.home-manager.enable = true;
-  
+
 }

@@ -1,6 +1,5 @@
 {
   description = "Home Manager configuration";
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     home-manager = {
@@ -8,16 +7,24 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
   outputs = { nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-    in
-    {
-      homeConfigurations."saltcal" = home-manager.lib.homeManagerConfiguration {
+
+      mkHomeConfig = activeTheme: home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./home.nix ];
+        extraSpecialArgs = { inherit activeTheme; };
+      };
+    in
+    {
+      homeConfigurations = {
+        "saltcal" = mkHomeConfig "catppuccin-mocha";
+
+        "gruvbox" = mkHomeConfig "gruvbox-dark";
+        "mocha" = mkHomeConfig "catppuccin-mocha";
+        "frutiger" = mkHomeConfig "frutiger-aero";
       };
     };
 }

@@ -1,3 +1,5 @@
+{ activeTheme }:
+
 {
   themes = {
     catppuccin-mocha = {
@@ -67,5 +69,5 @@
     };
   };
 
-  activeTheme = "catppuccin-mocha";
+  inherit activeTheme;
 }
