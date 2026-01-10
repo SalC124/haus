@@ -21,6 +21,25 @@
       gray = "#6c7086";
     };
 
+    nord = {
+      name = "nord";
+      wallpaper = "/home/saltcal/Pictures/Wallpapers/nordnix.png";
+      bg = "#2e3440";
+      bg0 = "#2e3440";
+      bg1 = "#3b4252";
+      bg2 = "#434c5e";
+      fg = "#d8dee9";
+      fg0 = "#eceff4";
+      red = "#bf616a";
+      green = "#a3be8c";
+      yellow = "#ebcb8b";
+      blue = "#81a1c1";
+      purple = "#b48ead";
+      aqua = "#88c0d0";
+      orange = "#d08770";
+      gray = "#4c566a";
+    };
+
     gruvbox-dark = {
       name = "gruvbox-dark";
       wallpaper = "/home/saltcal/Pictures/Wallpapers/gruvnix.png";

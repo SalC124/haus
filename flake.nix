@@ -25,6 +25,7 @@
         "gruvbox" = mkHomeConfig "gruvbox-dark";
         "mocha" = mkHomeConfig "catppuccin-mocha";
         "frutiger" = mkHomeConfig "frutiger-aero";
+        "nord" = mkHomeConfig "nord";
       };
     };
 }

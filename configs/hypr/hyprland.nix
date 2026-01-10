@@ -151,7 +151,7 @@
 
       # https://wiki.hyprland.org/Configuring/Variables/#decoration
       decoration {
-          rounding = ${if theme.name == "frutiger-aero" then ''8'' else ''0''}
+          rounding = ${if theme.name == "frutiger-aero" then ''0'' else ''8''}
 
           # Change transparency of focused and unfocused windows
           ${lib.optionalString (theme.name == "frutiger-aero") ''
