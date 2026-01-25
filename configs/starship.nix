@@ -25,10 +25,10 @@
       
       [nix_shell]
       disabled = false
-      impure_msg = "[](bold blue)"
-      pure_msg = "[](bold green)"
-      unknown_msg = "[](bold yellow)"
-      symbol = ""
+      impure_msg = "[](bold blue)"
+      pure_msg = "[](bold green)"
+      unknown_msg = "[](bold yellow)"
+      symbol = ""
       format = '[-\[](bold lavender)$state[\]](bold lavender)'
       
       [fill]

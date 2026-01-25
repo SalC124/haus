@@ -98,7 +98,7 @@
       #battery.critical,
       #battery.urgent {
         background-color: ${theme.red};
-        color: ${theme.yellow};
+        color: ${theme.bg};
       }
 
       #battery.charging {

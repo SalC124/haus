@@ -123,13 +123,13 @@
 
       # https://wiki.hyprland.org/Configuring/Variables/#general
       general {
-          gaps_in = ${if theme.name == "frutiger-aero" then ''16'' else ''8''}
-          gaps_out = ${if theme.name == "frutiger-aero" then ''32'' else ''16''}
+          gaps_in = ${if theme.name == "frutiger-aero" then ''16'' else ''4''}
+          gaps_out = ${if theme.name == "frutiger-aero" then ''32'' else ''8''}
 
-          border_size = ${if theme.name == "frutiger-aero" then ''4'' else ''8''}
+          border_size = ${if theme.name == "frutiger-aero" then ''4'' else ''4''}
 
           # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-          col.active_border = rgba(${builtins.substring 1 6 theme.blue}ff) # rgba(B4BEFEee) 45deg
+          col.active_border = rgba(${builtins.substring 1 6 theme.purple}ff) # rgba(B4BEFEee) 45deg
           col.inactive_border = rgba(${builtins.substring 1 6 theme.bg2}FF)
 
           # Set to true enable resizing windows by clicking and dragging on borders and gaps
@@ -375,6 +375,11 @@
       bind = $mainMod, S, togglespecialworkspace, magic
       bind = $mainMod&SHIFT&CTRL, S, movetoworkspacesilent, special:magic
       bind = $mainMod SHIFT, S, movetoworkspace, special:magic
+
+      bind = $mainMod, D, togglespecialworkspace, magicTwo
+      bind = $mainMod&SHIFT&CTRL, D, movetoworkspacesilent, special:magicTwo
+      bind = $mainMod SHIFT, D, movetoworkspace, special:magicTwo
+
       # Scroll through existing workspaces with mainMod + scroll
       bind = $mainMod, mouse_down, workspace, e+1
       bind = $mainMod, mouse_up, workspace, e-1
@@ -410,7 +415,7 @@
 
       windowrule = opacity 0.86, class:jetbrains-studio
       windowrule = opacity 1, class:^(jetbrains-studio)$,title:^(Running Devices)$
-      # windowrule = 
+      # windowrule =
 
       windowrule = float, class:$launcher
       windowrule = float, class:$fileManager
@@ -453,6 +458,8 @@
       #! Disable window flicker when autocomplete or tooltips appear
       windowrulev2 = noinitialfocus,class:^(jetbrains-.*)$,title:^(win.*)$,floating:1
       # -- End of IntelliJ Rules --
+
+      windowrulev2 = focusonactivate, class:^(MuseScore4)$, title:^(Additional score information)$
     '';
   };
 }
