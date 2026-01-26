@@ -17,6 +17,7 @@ in
     ./configs/waybar/style.nix
     ./configs/kitty/kitty.nix
     ./configs/kitty/style.nix
+    ./configs/fuzzel/fuzzel.nix
   ];
 
   _module.args = { inherit theme; };

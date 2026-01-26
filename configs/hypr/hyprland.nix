@@ -56,7 +56,7 @@
       $fileManager = nemo
       $browser = microsoft-edge --profile-directory="Profile 12"
       $school_browser = firefox # zen -p nouveau --new-tab https://salc124.github.io/ # microsoft-edge --profile-directory="Profile 13" --new-window salc124.github.io
-      $launcher = wofi --show drun #--show-icons
+      $launcher = fuzzel
 
       #################
       ### AUTOSTART ###
