@@ -1,4 +1,4 @@
-{ pkgs }:
+{ lib, pkgs }:
 
 # Generates a full GTK theme package from a Base16 palette
 # using Adwaita as the structural base.
