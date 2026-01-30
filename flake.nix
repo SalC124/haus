@@ -22,6 +22,8 @@
       homeConfigurations = {
         "saltcal" = mkHomeConfig "catppuccin-mocha";
 
+        "latte" = mkHomeConfig "catppuccin-latte";
+        "cherry" = mkHomeConfig "cherry-blossom";
         "gruvbox" = mkHomeConfig "gruvbox-dark";
         "mocha" = mkHomeConfig "catppuccin-mocha";
         "frutiger" = mkHomeConfig "frutiger-aero";

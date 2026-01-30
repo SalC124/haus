@@ -129,8 +129,8 @@
           border_size = ${if theme.name == "frutiger-aero" then ''4'' else ''4''}
 
           # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-          col.active_border = rgba(${builtins.substring 1 6 theme.purple}ff) # rgba(B4BEFEee) 45deg
-          col.inactive_border = rgba(${builtins.substring 1 6 theme.bg2}FF)
+          col.active_border = rgba(${builtins.substring 1 6 theme.base0E}ff) # rgba(B4BEFEee) 45deg
+          col.inactive_border = rgba(${builtins.substring 1 6 theme.base03}FF)
 
           # Set to true enable resizing windows by clicking and dragging on borders and gaps
           resize_on_border = true
@@ -170,7 +170,7 @@
           # drop_shadow = true
           # shadow_range = 4
           # shadow_render_power = 3
-          # col.shadow = rgba(${builtins.substring 1 6 theme.blue}ee)
+          # col.shadow = rgba(${builtins.substring 1 6 theme.base0D}ee)
 
           # https://wiki.hyprland.org/Configuring/Variables/#blur
           blur {

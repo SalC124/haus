@@ -1,4 +1,10 @@
-{ theme, lib, config, pkgs, ... }:
+{
+  theme,
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 {
   home.file.".config/waybar/style.css" = {
     force = true;
@@ -16,7 +22,7 @@
         background-color: rgba(28, 29, 43, 0);
         transition-property: background-color;
         transition-duration: 0.5s;
-        color: ${theme.fg};
+        color: ${theme.base04};
       }
 
       window#waybar.hidden {
@@ -37,24 +43,24 @@
         padding: 6px 18px;
         margin: 6px 3px;
         border-radius: 4px;
-        background-color: ${theme.bg};
-        color: ${theme.fg};
+        background-color: ${theme.base00};
+        color: ${theme.base04};
       }
 
       #workspaces button.active {
-        color: ${theme.bg};
-        background-color: ${theme.fg};
+        color: ${theme.base00};
+        background-color: ${theme.base04};
       }
 
       #workspaces button:hover {
         box-shadow: inherit;
         text-shadow: inherit;
-        color: ${theme.bg};
-        background-color: ${theme.fg};
+        color: ${theme.base00};
+        background-color: ${theme.base04};
       }
 
       #workspaces button.urgent {
-        background-color: ${theme.red};
+        background-color: ${theme.base08};
       }
 
       #memory,
@@ -69,8 +75,8 @@
         border-radius: 4px;
         margin: 6px 3px;
         padding: 6px 12px;
-        background-color: ${theme.bg};
-        color: ${theme.bg};
+        background-color: ${theme.base00};
+        color: ${theme.base00};
       }
 
       #custom-power {
@@ -83,64 +89,67 @@
         margin-left: 5px;
         font-size: 15px;
         border-radius: 8px 0px 0px 8px;
-        color: ${theme.blue};
+        color: ${theme.base0D};
       }
 
       #memory {
-        background-color: ${theme.orange};
+        background-color: ${theme.base09};
       }
 
       #battery {
-        background-color: ${theme.red};
+        background-color: ${theme.base0C};
       }
 
-      #battery.warning,
+      #battery.warning {
+        background-color: ${theme.base09};
+        color: ${theme.base00};
+      }
       #battery.critical,
       #battery.urgent {
-        background-color: ${theme.red};
-        color: ${theme.bg};
+        background-color: ${theme.base08};
+        color: ${theme.base00};
       }
 
       #battery.charging {
-        background-color: ${theme.green};
-        color: ${theme.bg};
+        background-color: ${theme.base0B};
+        color: ${theme.base00};
       }
 
       #backlight {
-        background-color: ${theme.orange};
+        background-color: ${theme.base09};
       }
 
       #wireplumber {
-        background-color: ${theme.yellow};
+        background-color: ${theme.base0A};
       }
 
       #network {
-        background-color: ${theme.aqua};
+        background-color: ${theme.base0D};
         padding-right: 17px;
       }
 
       #clock {
         font-family: JetBrainsMono Nerd Font;
-        background-color: ${theme.purple};
+        background-color: ${theme.base0E};
       }
 
       #custom-power {
-        background-color: ${theme.orange};
+        background-color: ${theme.base09};
       }
 
       tooltip {
         border-radius: 8px;
         padding: 15px;
-        background-color: ${theme.bg};
+        background-color: ${theme.base00};
       }
 
       tooltip label {
         padding: 5px;
-        background-color: ${theme.bg};
+        background-color: ${theme.base00};
       }
 
       #custom-notifications {
-        background-color: ${theme.fg};
+        background-color: ${theme.base04};
       }
     '';
   };
