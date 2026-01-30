@@ -28,9 +28,9 @@
       ################
 
       # See https://wiki.hyprland.org/Configuring/Monitors/
-      monitor=eDP-2,2560x1600@165,0x0,1 # internal when dGPU
-      monitor=eDP-1,2560x1600@165,0x0,1
-      monitor=DP-3,2560x1440@165,-2560x0,1 # samsung curved
+      monitor=eDP-2,2560x1600@165,2560x0,1 # internal when dGPU
+      monitor=eDP-1,2560x1600@165,2560x0,1
+      monitor=DP-3,2560x1440@165,0x0,1 # samsung curved
       # monitor=DP-3,4096x2160@60,-4096x0,1.6 # barbs
       monitor=DP-4,1920x1080@60,0x1600,1
 
@@ -53,9 +53,9 @@
 
       # Set programs that you use
       $terminal = kitty
-      $fileManager = nemo
+      $fileManager = nautilus
       $browser = microsoft-edge --profile-directory="Profile 12"
-      $school_browser = firefox # zen -p nouveau --new-tab https://salc124.github.io/ # microsoft-edge --profile-directory="Profile 13" --new-window salc124.github.io
+      $school_browser = zen -p nouveau --new-tab https://salc124.github.io/ # firefox # microsoft-edge --profile-directory="Profile 13" --new-window salc124.github.io
       $launcher = fuzzel
 
       #################
@@ -85,16 +85,11 @@
       exec-once = zellij -s home
 
       # fix stupid themes
-      exec-once = dconf write /org/gnome/desktop/interface/gtk-theme "'Adwaita'"
-      exec-once = dconf write /org/gnome/desktop/interface/icon-theme "'Flat-Remix-Red-Dark'"
-      exec-once = dconf write /org/gnome/desktop/interface/document-font-name "'Noto Sans Medium 11'"
-      exec-once = dconf write /org/gnome/desktop/interface/font-name "'Noto Sans Medium 11'"
-      exec-once = dconf write /org/gnome/desktop/interface/monospace-font-name "'Noto Sans Mono Medium 11'"
-
-      # cursors
-      exec-once = dconf write /org/gnome/desktop/interface/cursor-theme "'catppuccin-mocha-dark-cursors'" # frappe
-      exec-once = dconf write /org/gnome/desktop/interface/cursor-size "32"
-
+      # exec-once = dconf write /org/gnome/desktop/interface/gtk-theme "'Adwaita'"
+      # exec-once = dconf write /org/gnome/desktop/interface/icon-theme "'Flat-Remix-Red-Dark'"
+      # exec-once = dconf write /org/gnome/desktop/interface/document-font-name "'Noto Sans Medium 11'"
+      # exec-once = dconf write /org/gnome/desktop/interface/font-name "'Noto Sans Medium 11'"
+      # exec-once = dconf write /org/gnome/desktop/interface/monospace-font-name "'Noto Sans Mono Medium 11'"
 
       # fix sceenshrare
       exec-once = dbus-update-activation-environment --systemd --all
@@ -110,9 +105,15 @@
 
       # See https://wiki.hyprland.org/Configuring/Environment-variables/
 
+      env = HYPRCURSOR_THEME,${
+        if theme.name != "catppuccin-mocha" then "Bibata-Modern-Ice" else "Catppuccin Mocha Dark"
+      }
+      env = XCURSOR_THEME,${
+        if theme.name != "catppuccin-mocha" then "Bibata-Modern-Ice" else "Catppuccin Mocha Dark"
+      }
       env = GDK_SCALE,1
-      env = XCURSOR_SIZE,32
-      env = HYPRCURSOR_SIZE,32
+      env = HYPRCURSOR_SIZE,24
+      env = XCURSOR_SIZE,24
 
 
       #####################
@@ -157,6 +158,10 @@
           ${lib.optionalString (theme.name == "frutiger-aero") ''
             active_opacity = .65
             inactive_opacity = .65
+          ''}
+          ${lib.optionalString (theme.name == "catppuccin-mocha" || theme.name == "cherry-blossom") ''
+            active_opacity = .85
+            inactive_opacity = .85
           ''}
 
           shadow {
@@ -407,9 +412,9 @@
       windowrule = float, class:^(wofi)$
       windowrule = float, class:Matplotlib
 
-      windowrule = opacity 100%, class:zen
-      windowrule = noborder, class:zen
-      windowrule = rounding 0 , class:zen
+      windowrule = opacity 100%, class:zen-twilight
+      windowrule = noborder, class:zen-twilight
+      # windowrule = rounding 0 , class:zen-twilight
 
       windowrule = opacity 100%, class:steam_app_1229490
 
@@ -418,7 +423,7 @@
       # windowrule =
 
       windowrule = float, class:$launcher
-      windowrule = float, class:$fileManager
+      windowrule = float, class:^($fileManager)$
       # windowrule = tile, class:^(com-cburch-logisim-Main)$ # ts rule is geeked on fent
       windowrule = tile, title:.*Logisim-evolution.*
 

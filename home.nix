@@ -1,8 +1,16 @@
-{ config, pkgs, activeTheme, ... }:
+{
+  pkgs,
+  lib,
+  activeTheme,
+  ...
+}:
 
 let
   themesConfig = import ./themes.nix { inherit activeTheme; };
   theme = themesConfig.themes.${themesConfig.activeTheme};
+
+  gtkThemeGen = import ./modules/gtk-theme-generator.nix { inherit pkgs lib; };
+  selectedGtkTheme = gtkThemeGen activeTheme themesConfig.themes.${activeTheme};
 in
 {
   home.username = "saltcal";
@@ -18,9 +26,12 @@ in
     ./configs/kitty/kitty.nix
     ./configs/kitty/style.nix
     ./configs/fuzzel/fuzzel.nix
+
+    # ./configs/global/gtk.nix
+    ./modules/gtk.nix
   ];
 
-  _module.args = { inherit theme; };
+  _module.args = { inherit theme selectedGtkTheme activeTheme; };
 
   programs.home-manager.enable = true;
 

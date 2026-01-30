@@ -1,4 +1,10 @@
-{ theme, lib, config, pkgs, ... }:
+{
+  theme,
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 {
   home.packages = [ pkgs.fuzzel ];
   home.file.".config/fuzzel/fuzzel.ini" = {
@@ -7,6 +13,7 @@
       [main]
       font=CaskaydiaCove Nerd Font Mono:size=12
       scale=1.2
+      prompt="❯ "
 
       [colors]
       background=${builtins.substring 1 6 theme.base00}dd
