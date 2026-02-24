@@ -135,4 +135,36 @@ theme: ''
   scrolledwindow, viewport {
     background-color: transparent;
   }
+
+  /* Fix "Linked" buttons (like the back/forward buttons in browsers) */
+  .linked:not(.vertical) > button {
+      border-right-width: 0;
+      border-left-width: 0;
+      border-radius: 0;
+  }
+
+  .linked:not(.vertical) > button:first-child {
+      border-left-width: 1px;
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+  }
+
+  .linked:not(.vertical) > button:last-child {
+      border-right-width: 1px;
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+  }
+
+  /* Fix menus and popovers that often stay white/gray */
+  popover contents,
+  menu,
+  menubar {
+      background-color: @base00;
+      color: @base05;
+      border: 1px solid @base02;
+  }
+
+  menuitem:hover {
+      background-color: @base02;
+  }
 ''

@@ -6,7 +6,7 @@
       palette = "catppuccin_mocha"
 
       format = ''''
-      [\(](bold lavender)$username(bold text)[\)](bold lavender)[-\[](bold lavender)$directory[\]](bold lavender)$git_branch$rust$java$haskell$python$nodejs$kotlin$nix_shell
+      [\(](bold lavender)$username(bold text)[\)](bold lavender)[-\[](bold lavender)$directory[\]](bold lavender)$git_branch$rust$c$java$haskell$python$nodejs$kotlin$nix_shell
       (bold lavender)$character
       ''''
 
@@ -68,6 +68,10 @@
       symbol = ""
       format = '[-\[](bold lavender)[[$symbol( $version)](fg:green)]($style)[\]](bold lavender)'
 
+      [c]
+      symbol = ""
+      format = '[-\[](bold lavender)[$symbol](fg:blue)[ $version](fg:blue)[\]](bold lavender)'
+
       [rust]
       symbol = ""
       format = '[-\[](bold lavender)[[$symbol rust-tacular!](fg:peach)]($style)[\]](bold lavender)'
@@ -103,7 +107,7 @@
       sapphire = "${theme.base0D}"
       blue = "${theme.base0D}"
       lavender = "${theme.base0E}"
-      text = "${theme.base04}"
+      text = "${theme.base05}"
       subtext1 = "${theme.base04}"
       subtext0 = "${theme.base04}"
       overlay2 = "${theme.base0F}"

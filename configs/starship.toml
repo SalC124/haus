@@ -11,7 +11,7 @@ palette = "catppuccin_mocha"
 # '''
 
 format = '''
-[\(](bold lavender)$username(bold text)[\)](bold lavender)[-\[](bold lavender)$directory[\]](bold lavender)$git_branch$rust$java$haskell$python$nodejs$kotlin$nix_shell
+[\(](bold lavender)$username(bold text)[\)](bold lavender)[-\[](bold lavender)$directory[\]](bold lavender)$git_branch$rust$c$java$haskell$python$nodejs$kotlin$nix_shell
 (bold lavender)$character
 '''
 

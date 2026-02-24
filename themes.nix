@@ -4,7 +4,7 @@
   themes = {
     catppuccin-mocha = {
       name = "catppuccin-mocha";
-      wallpaper = "/home/saltcal/Pictures/Wallpapers/waves.png";
+      wallpaper = "/home/saltcal/Pictures/Wallpapers/nixos-wallpaper.png";
 
       base00 = "#1e1e2e"; # base
       base01 = "#181825"; # mantle

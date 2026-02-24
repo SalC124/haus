@@ -17,17 +17,24 @@
         font-size: 20px;
       }
 
+      /* -----------------------------------------------------
+       * BAR
+       * ----------------------------------------------------- */
+
       window#waybar {
-        /* background: transparent; */
-        background-color: rgba(28, 29, 43, 0);
+        background-color: rgba(0, 0, 0, 0);
         transition-property: background-color;
         transition-duration: 0.5s;
-        color: ${theme.base04};
+        color: ${theme.base05};
       }
 
       window#waybar.hidden {
         opacity: 0.5;
       }
+
+      /* -----------------------------------------------------
+       * WORKSPACES
+       * ----------------------------------------------------- */
 
       #workspaces {
         background-color: transparent;
@@ -35,33 +42,34 @@
 
       #workspaces button {
         all: initial;
-        /* Remove GTK theme values (waybar #1351) */
         min-width: 0;
-        /* Fix weird spacing in materia (waybar #450) */
         box-shadow: inset 0 -3px transparent;
-        /* Use box-shadow instead of border so the text isn't offset */
         padding: 6px 18px;
         margin: 6px 3px;
         border-radius: 4px;
-        background-color: ${theme.base00};
-        color: ${theme.base04};
+
+        background-color: ${theme.base01};
+        color: ${theme.base05};
       }
 
       #workspaces button.active {
+        background-color: ${theme.base0D};
         color: ${theme.base00};
-        background-color: ${theme.base04};
       }
 
       #workspaces button:hover {
-        box-shadow: inherit;
-        text-shadow: inherit;
+        background-color: ${theme.base0D};
         color: ${theme.base00};
-        background-color: ${theme.base04};
       }
 
       #workspaces button.urgent {
         background-color: ${theme.base08};
+        color: ${theme.base00};
       }
+
+      /* -----------------------------------------------------
+       * MODULES (shared)
+       * ----------------------------------------------------- */
 
       #memory,
       #custom-power,
@@ -75,13 +83,14 @@
         border-radius: 4px;
         margin: 6px 3px;
         padding: 6px 12px;
-        background-color: ${theme.base00};
-        color: ${theme.base00};
+
+        background-color: ${theme.base01};
+        color: ${theme.base05};
       }
 
-      #custom-power {
-        margin-right: 12px;
-      }
+      /* -----------------------------------------------------
+       * LOGO
+       * ----------------------------------------------------- */
 
       #custom-logo {
         padding-right: 7px;
@@ -92,21 +101,32 @@
         color: ${theme.base0D};
       }
 
+      /* -----------------------------------------------------
+       * MEMORY
+       * ----------------------------------------------------- */
+
       #memory {
-        background-color: ${theme.base09};
+        background-color: ${theme.base0C}; /* cyan = system info */
+        color: ${theme.base00};
       }
 
+      /* -----------------------------------------------------
+       * BATTERY
+       * ----------------------------------------------------- */
+
       #battery {
-        background-color: ${theme.base0C};
+        background-color: ${theme.base0B}; /* green = OK */
+        color: ${theme.base00};
       }
 
       #battery.warning {
-        background-color: ${theme.base09};
+        background-color: ${theme.base09}; /* orange = warning */
         color: ${theme.base00};
       }
+
       #battery.critical,
       #battery.urgent {
-        background-color: ${theme.base08};
+        background-color: ${theme.base08}; /* red = critical */
         color: ${theme.base00};
       }
 
@@ -115,41 +135,78 @@
         color: ${theme.base00};
       }
 
+      /* -----------------------------------------------------
+       * BACKLIGHT
+       * ----------------------------------------------------- */
+
       #backlight {
-        background-color: ${theme.base09};
+        background-color: ${theme.base09}; /* orange = attention */
+        color: ${theme.base00};
       }
+
+      /* -----------------------------------------------------
+       * AUDIO
+       * ----------------------------------------------------- */
 
       #wireplumber {
-        background-color: ${theme.base0A};
+        background-color: ${theme.base0A}; /* yellow = audio/attention */
+        color: ${theme.base00};
       }
 
+      /* -----------------------------------------------------
+       * NETWORK
+       * ----------------------------------------------------- */
+
       #network {
-        background-color: ${theme.base0D};
+        background-color: ${theme.base0D}; /* blue = primary accent */
+        color: ${theme.base00};
         padding-right: 17px;
       }
 
+      /* -----------------------------------------------------
+       * CLOCK
+       * ----------------------------------------------------- */
+
       #clock {
         font-family: JetBrainsMono Nerd Font;
-        background-color: ${theme.base0E};
+        background-color: ${theme.base0E}; /* purple = secondary accent */
+        color: ${theme.base00};
       }
+
+      /* -----------------------------------------------------
+       * POWER
+       * ----------------------------------------------------- */
 
       #custom-power {
         background-color: ${theme.base09};
+        color: ${theme.base00};
+        margin-right: 12px;
       }
+
+      /* -----------------------------------------------------
+       * NOTIFICATIONS
+       * ----------------------------------------------------- */
+
+      #custom-notifications {
+        background-color: ${theme.base03}; /* muted foreground */
+        color: ${theme.base00};
+      }
+
+      /* -----------------------------------------------------
+       * TOOLTIP
+       * ----------------------------------------------------- */
 
       tooltip {
         border-radius: 8px;
         padding: 15px;
-        background-color: ${theme.base00};
+        background-color: ${theme.base01};
+        color: ${theme.base05};
       }
 
       tooltip label {
         padding: 5px;
-        background-color: ${theme.base00};
-      }
-
-      #custom-notifications {
-        background-color: ${theme.base04};
+        background-color: ${theme.base01};
+        color: ${theme.base05};
       }
     '';
   };

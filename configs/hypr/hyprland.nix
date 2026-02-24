@@ -1,4 +1,42 @@
-{ theme, lib, ... }:
+{
+  theme,
+  lib,
+  pkgs,
+  ...
+}:
+
+let
+  delUnusedScreen = pkgs.writeShellScriptBin "ligma" ''
+    dpms=$(hyprctl monitors | awk '
+      $1=="Monitor" && $2=="eDP-1" {inblock=1}
+      inblock && /dpmsStatus/ {print $2; exit}
+    ')
+    if [ "$dpms" = "0" ]; then
+        hyprctl keyword monitor "eDP-1,disable"
+    fi
+
+    dpms=$(hyprctl monitors | awk '
+      $1=="Monitor" && $2=="eDP-2" {inblock=1}
+      inblock && /dpmsStatus/ {print $2; exit}
+    ')
+    if [ "$dpms" = "0" ]; then
+        hyprctl keyword monitor "eDP-2,disable"
+    fi
+
+    # hyprctl monitors | awk '
+    #   /^Monitor eDP-/ {mon=$2; inblock=1}
+    #   inblock && /dpmsStatus:/ {
+    #       if ($2 == 0)
+    #           printf("hyprctl keyword monitor \"%s,disable\"\n", mon)
+    #       inblock=0
+    #   }
+    # ' | while read -r cmd; do
+    #     eval "$cmd"
+    # done
+
+    hyprctl dispatch workspace 1
+  '';
+in
 {
   home.file.".config/hypr/hyprland.conf" = {
     force = true;
@@ -30,6 +68,7 @@
       # See https://wiki.hyprland.org/Configuring/Monitors/
       monitor=eDP-2,2560x1600@165,2560x0,1 # internal when dGPU
       monitor=eDP-1,2560x1600@165,2560x0,1
+      monitor=DP-2,2560x1440@165,0x0,1 # samsung curved
       monitor=DP-3,2560x1440@165,0x0,1 # samsung curved
       # monitor=DP-3,4096x2160@60,-4096x0,1.6 # barbs
       monitor=DP-4,1920x1080@60,0x1600,1
@@ -76,6 +115,9 @@
       exec-once = syncthing
       exec-once = syncthingtray --wait
       exec-once = corectrl
+
+      exec-once = ${lib.getExe delUnusedScreen}
+
       # exec-once = wayvnc -f 30
 
       # exec-once = systemctl --user start hyprpolkitagent
@@ -124,10 +166,10 @@
 
       # https://wiki.hyprland.org/Configuring/Variables/#general
       general {
-          gaps_in = ${if theme.name == "frutiger-aero" then ''16'' else ''4''}
-          gaps_out = ${if theme.name == "frutiger-aero" then ''32'' else ''8''}
+          gaps_in = ${if theme.name == "frutiger-aero" then "16" else "4"}
+          gaps_out = ${if theme.name == "frutiger-aero" then "32" else "8"}
 
-          border_size = ${if theme.name == "frutiger-aero" then ''4'' else ''4''}
+          border_size = ${if theme.name == "frutiger-aero" then "4" else "4"}
 
           # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
           col.active_border = rgba(${builtins.substring 1 6 theme.base0E}ff) # rgba(B4BEFEee) 45deg
@@ -152,7 +194,7 @@
 
       # https://wiki.hyprland.org/Configuring/Variables/#decoration
       decoration {
-          rounding = ${if theme.name == "frutiger-aero" then ''0'' else ''8''}
+          rounding = ${if theme.name == "frutiger-aero" then "0" else "8"}
 
           # Change transparency of focused and unfocused windows
           ${lib.optionalString (theme.name == "frutiger-aero") ''
@@ -165,7 +207,7 @@
           ''}
 
           shadow {
-              enabled = ${if theme.name == "frutiger-aero" then ''true'' else ''false''}
+              enabled = ${if theme.name == "frutiger-aero" then "true" else "false"}
               range = 2
               sharp = false
               offset = 28 28
@@ -270,7 +312,7 @@
 
           touchpad {
               natural_scroll = true
-      	tap-and-drag = false
+      	      tap-and-drag = false
               clickfinger_behavior = true
               disable_while_typing = false
               middle_button_emulation = true
@@ -414,6 +456,8 @@
 
       windowrule = opacity 100%, class:zen-twilight
       windowrule = noborder, class:zen-twilight
+      windowrule = noborder, class:^(Godot)$
+      windowrule = tile, class:^(Godot)$
       # windowrule = rounding 0 , class:zen-twilight
 
       windowrule = opacity 100%, class:steam_app_1229490
@@ -424,6 +468,7 @@
 
       windowrule = float, class:$launcher
       windowrule = float, class:^($fileManager)$
+      windowrule = float, class:org.gnome.Nautilus
       # windowrule = tile, class:^(com-cburch-logisim-Main)$ # ts rule is geeked on fent
       windowrule = tile, title:.*Logisim-evolution.*
 
@@ -439,6 +484,13 @@
       # windowrule = opacity 100%, class:floating
 
 
+
+      windowrule = opacity 100%,class:^(Godot)$
+
+      # windowrule = opacity 0.60, class:dev.zed.Zed-Nightly
+      windowrule = opacity 0.85 override 0.85 override, class:dev.zed.Zed-Nightly
+
+
       windowrule = suppressevent maximize, class:.* # You'll probably like this.
 
       # make terminal awesome
@@ -446,6 +498,11 @@
       # layerrule = dimaround,class:^(kitty)$,title:^(kitty)$
       # layerrule = ignorealpha 0.5,class:^(kitty)$,title:^(kitty)$
 
+      # kicad
+      windowrule = float, title:^(Symbol Library Browser)$
+
+
+      windowrule = float, class:xdg-desktop-portal-gtk
 
       # -- Fix odd behaviors in IntelliJ IDEs -- https://github.com/fubuki4649/dotfiles/blob/master/.config/hypr/hyprland.conf
       #! Fix focus issues when dialogs are opened or closed

@@ -26,6 +26,7 @@ in
     ./configs/kitty/kitty.nix
     ./configs/kitty/style.nix
     ./configs/fuzzel/fuzzel.nix
+    ./configs/zed/zed-thema.nix
 
     # ./configs/global/gtk.nix
     ./modules/gtk.nix
