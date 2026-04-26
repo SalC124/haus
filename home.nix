@@ -26,7 +26,11 @@ in
     ./configs/kitty/kitty.nix
     ./configs/kitty/style.nix
     ./configs/fuzzel/fuzzel.nix
+
     ./configs/zed/zed-thema.nix
+    ./configs/zed/keymap.nix
+    ./configs/zed/settings.nix
+    ./configs/zed/tasks.nix
 
     # ./configs/global/gtk.nix
     # ./modules/gtk.nix
