@@ -29,7 +29,7 @@ in
     ./configs/zed/zed-thema.nix
 
     # ./configs/global/gtk.nix
-    ./modules/gtk.nix
+    # ./modules/gtk.nix
   ];
 
   _module.args = { inherit theme selectedGtkTheme activeTheme; };

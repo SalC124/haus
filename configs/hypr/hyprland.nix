@@ -36,6 +36,9 @@ let
 
     hyprctl dispatch workspace 1
   '';
+  extractToClipboard = pkgs.writeShellScriptBin "txt-extr" ''
+      hyprshot -m region --raw | tesseract stdin stdout | wl-copy
+  '';
 in
 {
   home.file.".config/hypr/hyprland.conf" = {
@@ -202,8 +205,8 @@ in
             inactive_opacity = .65
           ''}
           ${lib.optionalString (theme.name == "catppuccin-mocha" || theme.name == "cherry-blossom") ''
-            active_opacity = .85
-            inactive_opacity = .85
+            active_opacity = 1.0 # 0.85
+            inactive_opacity = 1.0 # 0.85
           ''}
 
           shadow {
@@ -362,6 +365,9 @@ in
       bind = shift, Print, exec, hyprshot -m window -o ~/Pictures/Screenshots/ -z
       bind = ctrl, Print, exec, hyprshot -m output -m eDP-2 -o ~/Pictures/Screenshots/ -z
 
+      # extract text
+      bind = $mainMod SHIFT, t, exec, ${lib.getExe extractToClipboard}
+
       # lock screen
       bind = $SUPER_SHIFT alt, l, exec, hyprlock
 
@@ -488,7 +494,9 @@ in
       windowrule = opacity 100%,class:^(Godot)$
 
       # windowrule = opacity 0.60, class:dev.zed.Zed-Nightly
-      windowrule = opacity 0.85 override 0.85 override, class:dev.zed.Zed-Nightly
+      windowrule = opacity 1.0 override 1.0 override, class:dev.zed.Zed-Nightly
+
+      windowrule = float, title:^(Sign in - Google Accounts — Zen Twilight)$
 
 
       windowrule = suppressevent maximize, class:.* # You'll probably like this.
@@ -522,6 +530,9 @@ in
       # -- End of IntelliJ Rules --
 
       windowrulev2 = focusonactivate, class:^(MuseScore4)$, title:^(Additional score information)$
+
+      windowrule = float,initialTitle:Claude
+      windowrule = size 607 641, initialTitle:Claude
     '';
   };
 }

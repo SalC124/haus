@@ -86,7 +86,7 @@
 
       [haskell]
       symbol = ""
-      format = '[-\[](bold lavender)[[$symbol( $version)](fg:mauve)]($style)[\]](bold lavender)'
+      format = '[-\[](bold lavender)[[$symbol( $version)](fg:blue)]($style)[\]](bold lavender)'
 
       [python]
       symbol = ""

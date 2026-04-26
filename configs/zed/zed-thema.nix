@@ -86,13 +86,13 @@ let
           "vim.replace.background"         = theme.base08;  # red
 
           # ── Window / surface chrome ────────────────────────────────────────
-          "background.appearance"          = "opaque";
-          "background"                     = theme.base00;
-          "elevated_surface.background"    = theme.base01;
-          "surface.background"             = theme.base01;
+          "background.appearance"          = "blurred";
+          "background"                     = a theme.base00 "cc";
+          "elevated_surface.background"    = a theme.base01 "bb";
+          "surface.background"             = a theme.base01 "bb";
 
           # ── Generic interactive elements ───────────────────────────────────
-          "element.background"             = theme.base00;
+          "element.background"             = a theme.base00 "99";
           "element.hover"                  = theme.base02;
           "element.active"                 = a theme.base02 "4d";
           "element.selected"               = a theme.base02 "4d";
@@ -129,25 +129,25 @@ let
           "border.disabled"                = theme.base03;
 
           # ── Status / title bars ────────────────────────────────────────────
-          "status_bar.background"          = theme.base00;
-          "title_bar.background"           = theme.base00;
-          "title_bar.inactive_background"  = a theme.base00 "dd";
-          "toolbar.background"             = theme.base01;
-          "tab_bar.background"             = theme.base00;
-          "tab.inactive_background"        = a theme.base00 "aa";
-          "tab.active_background"          = theme.base01;
+          "status_bar.background"          = a theme.base00 "dd";
+          "title_bar.background"           = a theme.base00 "dd";
+          "title_bar.inactive_background"  = a theme.base00 "99";
+          "toolbar.background"             = a theme.base01 "aa";
+          "tab_bar.background"             = a theme.base00 "cc";
+          "tab.inactive_background"        = a theme.base00 "88";
+          "tab.active_background"          = a theme.base01 "cc";
 
           # ── Search ─────────────────────────────────────────────────────────
           "search.match_background"        = a theme.base0C "4d";
           "search.active_match_background" = a theme.base08 "4d";
 
           # ── Panels & panes ─────────────────────────────────────────────────
-          "panel.background"               = theme.base01;
+          "panel.background"               = a theme.base01 "bb";
           "panel.focused_border"           = theme.base05;
           "panel.indent_guide"             = a theme.base02 "99";
           "panel.indent_guide_active"      = theme.base03;
           "panel.indent_guide_hover"       = theme.base0E;
-          "panel.overlay_background"       = theme.base01;
+          "panel.overlay_background"       = a theme.base01 "bb";
           "pane.focused_border"            = theme.base05;
           "pane_group.border"              = theme.base02;
 
@@ -156,7 +156,7 @@ let
           "scrollbar.thumb.hover_background" = theme.base03;
           "scrollbar.thumb.active_background" = null;
           "scrollbar.thumb.border"         = null;
-          "scrollbar.track.background"     = theme.base00;
+          "scrollbar.track.background"     = "#00000000";
           "scrollbar.track.border"         = a theme.base05 "12";
 
           # ── Minimap ────────────────────────────────────────────────────────
@@ -167,8 +167,8 @@ let
 
           # ── Editor ────────────────────────────────────────────────────────
           "editor.foreground"              = theme.base05;
-          "editor.background"              = theme.base01;
-          "editor.gutter.background"       = theme.base01;
+          "editor.background"              = a theme.base01 "e0";
+          "editor.gutter.background"       = a theme.base01 "e0";
           "editor.subheader.background"    = theme.base00;
           "editor.active_line.background"  = a theme.base05 "12";
           "editor.highlighted_line.background" = null;
@@ -188,8 +188,8 @@ let
           "editor.debugger_active_line.background" = a theme.base09 "12";
 
           # ── Terminal ───────────────────────────────────────────────────────
-          "terminal.background"            = theme.base01;
-          "terminal.ansi.background"       = theme.base01;
+          "terminal.background"            = a theme.base01 "cc";
+          "terminal.ansi.background"       = a theme.base01 "cc";
           "terminal.foreground"            = theme.base05;
           "terminal.dim_foreground"        = theme.base04;
           "terminal.bright_foreground"     = theme.base05;
